@@ -6,7 +6,7 @@ as well as an amount, and provide you with the new amount of dollars in CAD
 def getCPI(year):
     """finds the CPI using text file"""
     
-    offsetYear = 1914   #The year that the html file starts at
+    offsetYear = 1914   #The year that the file starts at
     dataFile = open('CPI.txt')
     dataList = dataFile.read().split()
     CPI = dataList[year - offsetYear]
@@ -29,7 +29,7 @@ def main():
     fromAmount = float(input("What is the amount in " + str(fromYear) + 
                        " CAD that you'd like to convert from? "))
     toYear = int(input("What is the year you'd like to convert to? "))
-    amountOfYears = toYear - fromYear
+    amountOfYears = toYear - fromYear + 1
     
     # Get CPI and then inflation rate
     fromCPI = getCPI(fromYear)
@@ -44,3 +44,4 @@ def main():
     print("\nThis means that ${:.2f} in {} CAD is equivalent to ${:.2f} in {} CAD".format(fromAmount,fromYear,newAmount,toYear))
     
 main()
+input()
